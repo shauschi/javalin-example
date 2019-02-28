@@ -1,0 +1,24 @@
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile group: 'io.javalin', name: 'javalin', version: '2.6.0'
+  compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
+  compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.8'
+
+  testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+jar {
+  baseName = "app"
+  manifest {
+    attributes 'Main-Class': 'de.stefanhauschildt.javalin.Application'
+  }
+  from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
