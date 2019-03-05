@@ -13,6 +13,7 @@ class ServiceTest {
 
   private static DockerComposeContainer environment = new DockerComposeContainer(
       new File("docker-compose.yml"))
+      .withLocalCompose(false)
       .withExposedService("application_1", 7000, Wait.forListeningPort());
 
   @BeforeAll
