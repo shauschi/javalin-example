@@ -22,7 +22,7 @@ pipeline {
     }
 
     stage('test (integration)') {
-      steps { sh './gradlew integrationTest' }
+      steps { sh './gradlew integrationTest --debug' }
     }
 
     stage('containerize') {
