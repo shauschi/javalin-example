@@ -35,7 +35,6 @@ dependencies {
   integrationTestCompile sourceSets.main.output
   integrationTestCompile sourceSets.test.output
   integrationTestImplementation group: 'io.rest-assured', name: 'rest-assured', version: '3.3.0'
-  integrationTestImplementation group: 'org.testcontainers', name: 'postgresql', version: '1.7.3'
 }
 
 jar {
