@@ -1,18 +1,33 @@
 package de.stefanhauschildt.javalin;
 
+import dagger.Component;
+import de.stefanhauschildt.javalin.bar.BarController;
+import de.stefanhauschildt.javalin.foo.FooController;
 import io.javalin.Javalin;
+import javax.inject.Inject;
+import javax.inject.Singleton;
 
 public class Application extends Javalin {
 
-  public static void main(String[] args) {
-    new Application(7000).start();
+  @Singleton
+  @Component
+  public interface Builder {
+    Application app();
   }
 
-  Application(final Integer port) {
-    port(port);
+  public static void main(String[] args) {
+    DaggerApplication_Builder.create().app().start();
+  }
 
-    get("/",             Controller.getHelloWorld);
-    get("/foo/:message", Controller.getFoo);
+  @Inject
+  Application(
+      final FooController fooController,
+      final BarController barController) {
+    port(7000);
+
+    get("/",             fooController::getHelloWorld);
+    get("/foo/:message", fooController::getFoo);
+    get("/bar/:message", barController::getBar);
   }
 
 }

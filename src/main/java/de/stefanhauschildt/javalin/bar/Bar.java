@@ -1,9 +1,9 @@
-package de.stefanhauschildt.javalin;
+package de.stefanhauschildt.javalin.bar;
 
-class Foo {
+class Bar {
   private final String message;
 
-  Foo(final String message) {
+  Bar(final String message) {
     this.message = message;
   }
 
