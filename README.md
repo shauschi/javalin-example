@@ -1,2 +1,2 @@
 # javalin-example
-Java, javalin, jackson, JUnit 5, AssertJ, testcontainers, RestAssured
+Java, javalin, jackson, JUnit 5, AssertJ, RestAssured
