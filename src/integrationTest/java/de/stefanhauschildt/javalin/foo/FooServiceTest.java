@@ -1,25 +1,19 @@
 package de.stefanhauschildt.javalin.foo;
 
 import de.stefanhauschildt.javalin.Application;
-import de.stefanhauschildt.javalin.DaggerApplication_Builder;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import de.stefanhauschildt.javalin.ApplicationExtension;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import static io.restassured.RestAssured.given;
 
+@ExtendWith(ApplicationExtension.class)
 class FooServiceTest {
 
-  private static Application application = DaggerApplication_Builder.create().app();
+  private final Application application;
 
-  @BeforeAll
-  static void setUp() {
-    application.start(0);
-  }
-
-  @AfterAll
-  static void tearDown() {
-    application.stop();
+  FooServiceTest(final Application application) {
+    this.application = application;
   }
 
   @Test
