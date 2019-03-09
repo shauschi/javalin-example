@@ -12,12 +12,12 @@ public class ApplicationExtension implements BeforeAllCallback, AfterAllCallback
   private final Application application = DaggerApplication_Builder.create().app();
 
   @Override
-  public void afterAll(ExtensionContext context) {
+  public void beforeAll(ExtensionContext context) {
     application.start(0);
   }
 
   @Override
-  public void beforeAll(ExtensionContext context) {
+  public void afterAll(ExtensionContext context) {
     application.stop();
   }
 
